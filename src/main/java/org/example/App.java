@@ -13,36 +13,29 @@ public class App {
         WiseSayingController wiseSayingController = new WiseSayingController();
 
 
+
+
         while (true)
         {
             System.out.print("명령) ");
 
             String command = Container.getScanner().nextLine().trim();
 
-            if (command.equals("종료"))
+            Rq rq = new Rq(command);
+            switch (rq.getActionCode())
             {
-                systemController.exit();
-                break;
-            }
-
-            if (command.equals("등록"))
-            {
-                wiseSayingController.write();
-            }
-
-            if (command.equals("목록"))
-            {
-                wiseSayingController.list();
-            }
-
-            if (command.startsWith("삭제"))
-            {
-                Rq rq = new Rq(command);
-                System.out.printf("actionCode : %s\n", rq.getActionCode());
-                System.out.printf("params.id : %s\n", rq.getParam("id"));
-                System.out.printf("params.authorName : %s\n", rq.getParam("authorName"));
-                System.out.printf("params.content : %s\n", rq.getParam("content"));
-                wiseSayingController.remove();
+                case "종료":
+                    systemController.exit();
+                    return;
+                case "등록":
+                    wiseSayingController.write();
+                    break;
+                case "목록":
+                    wiseSayingController.list();
+                    break;
+                case "삭제":
+                    wiseSayingController.remove(rq);
+                    break;
             }
         }
     }

@@ -44,8 +44,21 @@ public class WiseSayingController
         }
     }
 
-    public void remove()
+    public void remove(Rq rq)
     {
+        int id = -1;
 
+        try
+        {
+            id = Integer.parseInt(rq.getParam("id"));
+        }
+
+        catch (NumberFormatException e)
+        {
+            System.out.println("id를 입력해주세요.");
+            return;
+        }
+
+        System.out.printf("%d번 명언이 삭제되었습니다.\n", id);
     }
 }
