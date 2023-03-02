@@ -16,6 +16,8 @@ public class App {
 
         long lastWiseSayingId = 0;
         List<WiseSaying> wiseSayings = new ArrayList<>();
+        SystemController systemController = new SystemController();
+        WiseSayingController wiseSayingController = new WiseSayingController(sc);
 
         while (true)
         {
@@ -25,12 +27,13 @@ public class App {
 
             if (command.equals("종료"))
             {
+                systemController.exit();
                 break;
             }
 
             if (command.equals("등록"))
             {
-                long id = lastWiseSayingId + 1;
+                /*long id = lastWiseSayingId + 1;
                 System.out.print("명언 : ");
                 String content = sc.nextLine().trim();
 
@@ -40,14 +43,13 @@ public class App {
                 WiseSaying wiseSaying = new WiseSaying(id, content, authorName);
                 wiseSayings.add(wiseSaying);
 
-                System.out.printf("%d번 명언이 등록되었습니다.\n", lastWiseSayingId);
-                lastWiseSayingId++;
-
+                System.out.printf("%d번 명언이 등록되었습니다.\n", lastWiseSayingId);*/
+                wiseSayingController.write();
             }
 
             if (command.equals("목록"))
             {
-                System.out.println("번호 | 작가 | 명언");
+                /*System.out.println("번호 | 작가 | 명언");
                 System.out.println("-".repeat(30));
 
                 for (int i = wiseSayings.size() - 1; i >= 0; i--)
@@ -56,7 +58,8 @@ public class App {
 
                     System.out.printf("%d / %s / %s\n", wiseSaying.getId(), wiseSaying.getAuthorName(),
                             wiseSaying.getContent());
-                }
+                }*/
+                wiseSayingController.list();
             }
         }
     }
