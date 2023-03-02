@@ -1,8 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class App {
     public void run()
@@ -35,6 +33,16 @@ public class App {
             if (command.equals("목록"))
             {
                 wiseSayingController.list();
+            }
+
+            if (command.startsWith("삭제"))
+            {
+                Rq rq = new Rq(command);
+                System.out.printf("actionCode : %s\n", rq.getActionCode());
+                System.out.printf("params.id : %s\n", rq.getParam("id"));
+                System.out.printf("params.authorName : %s\n", rq.getParam("authorName"));
+                System.out.printf("params.content : %s\n", rq.getParam("content"));
+                wiseSayingController.remove();
             }
         }
     }

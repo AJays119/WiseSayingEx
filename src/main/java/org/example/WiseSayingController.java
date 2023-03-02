@@ -43,4 +43,9 @@ public class WiseSayingController
                     wiseSaying.getContent());
         }
     }
+
+    public void remove()
+    {
+
+    }
 }
