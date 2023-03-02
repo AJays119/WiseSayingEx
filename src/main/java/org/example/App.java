@@ -12,6 +12,8 @@ public class App {
     {
         System.out.println("== 명언 앱 ==");
 
+        long lastWiseSayingId = 1;
+
         while (true)
         {
             System.out.print("명령) ");
@@ -21,6 +23,19 @@ public class App {
             if (command.equals("종료"))
             {
                 break;
+            }
+
+            if (command.equals("등록"))
+            {
+                System.out.print("명언 : ");
+                String content = sc.nextLine().trim();
+
+                System.out.print("작가 : ");
+                String authorName = sc.nextLine().trim();
+
+                System.out.printf("%d번 명언이 등록되었습니다.\n", lastWiseSayingId);
+                lastWiseSayingId++;
+
             }
         }
     }
