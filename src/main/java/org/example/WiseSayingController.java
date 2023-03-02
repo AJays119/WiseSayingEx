@@ -3,16 +3,13 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 public class WiseSayingController
 {
-    private final Scanner sc;
     private long lastWiseSayingId;
     private final List<WiseSaying> wiseSayings;
 
-    public WiseSayingController(Scanner sc)
+    public WiseSayingController()
     {
-        this.sc = sc;
         lastWiseSayingId = 0;
         wiseSayings = new ArrayList<>();
     }
@@ -21,10 +18,10 @@ public class WiseSayingController
     {
         long id = lastWiseSayingId + 1;
         System.out.print("명언 : ");
-        String content = sc.nextLine().trim();
+        String content = Container.getScanner().nextLine().trim();
 
         System.out.print("작가 : ");
-        String authorName = sc.nextLine().trim();
+        String authorName = Container.getScanner().nextLine().trim();
 
         WiseSaying wiseSaying = new WiseSaying(id, content, authorName);
         wiseSayings.add(wiseSaying);
